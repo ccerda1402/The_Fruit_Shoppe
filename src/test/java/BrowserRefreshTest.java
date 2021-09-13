@@ -1,25 +1,42 @@
+import com.github.dockerjava.api.model.LogConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.exec.LogOutputStream;
+import org.apache.commons.logging.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.SeleniumCdpConnection;
+import org.openqa.selenium.devtools.idealized.Javascript;
+import org.openqa.selenium.devtools.v86.browser.Browser;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.Logs;
+import org.slf4j.ILoggerFactory;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
+import javax.swing.plaf.TableHeaderUI;
+import java.awt.event.WindowFocusListener;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserRefreshTest {
 
     @Test
-    public void browserRefreshTest() {
+    public void browserRefreshTest() throws InterruptedException {
 
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--auto-open-devtools-for-tabs");
+        WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+
+
         driver.get("https://fruitshoppe.firebaseapp.com/");
 
         //Navigate to 'mangocados' and add 'bananas' to cart. The navigate to cart.

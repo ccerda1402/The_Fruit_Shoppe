@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.0.0-alpha-1</version>
+            <version>4.0.0-alpha-7</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -35,6 +35,14 @@
             <version>7.4.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.lkkushan101.ChromeDevTools/com.github.lkkushan101.ChromeDevTools -->
+        <dependency>
+            <groupId>com.github.lkkushan101.ChromeDevTools</groupId>
+            <artifactId>com.github.lkkushan101.ChromeDevTools</artifactId>
+            <version>1.00</version>
+        </dependency>
+
 
 
     </dependencies>
