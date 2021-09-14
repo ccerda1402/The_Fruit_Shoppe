@@ -1,8 +1,6 @@
-import com.beust.jcommander.internal.Console;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
@@ -22,14 +20,11 @@ public class BrowserRefreshTest {
 
 
         WebDriverManager.chromedriver().setup();
-        WebDriverManager.chromedriver().driverVersion("v86");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--auto-open-devtools-for-tabs");
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-
-
         driver.get("https://fruitshoppe.firebaseapp.com/");
 
         //Navigate to 'mangocados' and add 'bananas' to cart. The navigate to cart.
@@ -39,6 +34,8 @@ public class BrowserRefreshTest {
         driver.navigate().refresh();
 
         driver.findElement(By.xpath("//span[.='My Cart']")).click();
+
+
 
         LogEntries entry = driver.manage().logs().get(LogType.BROWSER);
         // Retrieving all log
