@@ -1,15 +1,16 @@
+import com.beust.jcommander.internal.Console;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.chromium.ChromiumDevToolsLocator;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.testng.annotations.Test;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +18,11 @@ public class BrowserRefreshTest {
 
     @Test
     public void browserRefreshTest() throws InterruptedException {
+        DevTools chromeDevTools;
+
 
         WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().driverVersion("v86");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--auto-open-devtools-for-tabs");
         WebDriver driver = new ChromeDriver(options);
