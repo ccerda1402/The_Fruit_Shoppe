@@ -6,8 +6,6 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
